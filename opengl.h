@@ -3,6 +3,24 @@
 
 #include <GL/gl.h>
 
+#ifdef _WIN32
+#   define CALLING_CONVENTION WINAPI
+#   define GL_ARRAY_BUFFER    0x8892
+#   define GL_COMPILE_STATUS  0x8B81
+#   define GL_ELEMENT_ARRAY_BUFFER 0x8893
+#   define GL_FRAGMENT_SHADER 0x8B30
+#   define GL_STATIC_DRAW     0x88E4
+#   define GL_VERTEX_SHADER   0x8B31
+#   define GL_INFO_LOG_LENGTH 0x8B84
+#   define GL_LINK_STATUS     0x8B82
+#   define GL_INFO_LOG_LENGTH 0x8B84
+#   define GLchar char
+typedef ptrdiff_t GLsizeiptr;
+typedef intptr_t GLintptr;
+#else
+#   define CALLING_CONVENTION
+#endif
+
 #define OPENGL_FUNCTIONS												\
 	X(void, glAttachShader, (GLuint, GLuint))							\
 	X(void, glBindBuffer, (GLenum, GLuint))								\
